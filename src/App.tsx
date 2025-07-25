@@ -21,26 +21,29 @@ const description = [
 
 export default function App() {
   return (
-    <>
+    <div className="flex flex-col lg:flex-row">
       <NavBar />
+
       <main>
-        <section className="relative min-h-[312px] overflow-clip px-6 pt-16 pb-6 text-right text-white">
+        <section className="relative min-h-[312px] overflow-clip text-right text-white lg:min-h-[600px]">
           <img
             className="absolute top-0 left-0 size-full min-w-[560px] origin-bottom-left object-cover"
             src={heroImg}
             alt=""
           />
 
-          <h1 className="relative text-[48px] leading-[58px]">白頭翁 (Chinese bulbul)</h1>
-          <p className="relative mt-2 text-[16px] leading-[19px]">
-            又名白頭鵯。以果實、昆蟲為主食，無法消化小米、穀類。平均壽命約 8~10 年。
-          </p>
+          <div className="absolute right-0 bottom-0 px-6 pb-6 lg:px-12 lg:pb-12">
+            <h1 className="text-[48px] leading-[58px]">白頭翁 (Chinese bulbul)</h1>
+            <p className="mt-2 text-[16px] leading-[19px]">
+              又名白頭鵯。以果實、昆蟲為主食，無法消化小米、穀類。平均壽命約 8~10 年。
+            </p>
+          </div>
         </section>
 
-        <section className="bg-[#DCCCBC] px-12 py-[60px]">
+        <section className="bg-[#DCCCBC] px-12 py-[60px] lg:px-[60px]">
           <ul className="flex flex-col gap-12 lg:flex-row">
             {description.map((item, index) => (
-              <li key={index} className="flex gap-6">
+              <li key={index} className="flex flex-1 gap-6">
                 <div className="relative h-[98px] w-[50px] shrink-0">
                   <h2 className="h-[82px] w-9 text-[34px] leading-[41px] font-bold">{item.name}</h2>
                   <div className="absolute right-0.5 bottom-[3px] size-[25px] rounded-full border-[8px] border-[#AA6666]/60"></div>
@@ -51,6 +54,6 @@ export default function App() {
           </ul>
         </section>
       </main>
-    </>
+    </div>
   )
 }

@@ -10,29 +10,41 @@ export function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="relative flex items-center justify-between bg-white px-6 py-4">
-      <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
-        <img src={isMenuOpen ? CloseIcon : MenuIcon} alt="Menu" width={40} height={40} />
-      </button>
+    <header className="relative shrink-0 bg-white px-6 py-4 lg:p-12">
+      <div className="flex items-center justify-between">
+        <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <img src={isMenuOpen ? CloseIcon : MenuIcon} alt="Menu" width={40} height={40} />
+        </button>
 
-      <h1 className="text-lg font-bold">白頭翁不吃小米</h1>
+        <h1 className="lg:lead-[36px] text-center text-lg font-bold lg:w-[269px] lg:text-[30px]">白頭翁不吃小米</h1>
 
-      <Logo />
+        <Logo />
+      </div>
 
+      {/* Mobile Menu */}
       <div
         className={clsx(
-          'absolute top-18 left-0 w-full overflow-hidden border-t border-gray-100 transition-[max-height] duration-300',
+          'absolute top-18 left-0 w-full overflow-hidden border-t border-gray-100 transition-[max-height] duration-300 lg:hidden',
           isMenuOpen ? 'max-h-[220px]' : 'max-h-0'
         )}
       >
         <nav className="space-y-1 py-6">
           {navOptions.map((option, index) => (
-            <div key={index} className="py-2 text-center text-base hover:font-bold hover:text-[#AA6666]">
+            <div key={index} className="cursor-pointer py-2 text-center text-base hover:font-bold hover:text-[#AA6666]">
               <span>{option}</span>
             </div>
           ))}
         </nav>
       </div>
+
+      {/* Desktop Menu */}
+      <nav className="hidden space-y-1 py-12 lg:block">
+        {navOptions.map((option, index) => (
+          <div key={index} className="cursor-pointer py-2 text-center text-base hover:font-bold hover:text-[#AA6666]">
+            <span>{option}</span>
+          </div>
+        ))}
+      </nav>
     </header>
   )
 }
